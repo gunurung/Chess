@@ -1,0 +1,32 @@
+
+
+plugins {
+    id 'java'
+}
+
+group 'com.gunurung'
+version '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    project.ext.dl4j_version='1.0.0-M2.1'
+    implementation 'org.nd4j:nd4j-cuda-8.0-platform:1.0.0-beta2'
+    implementation "org.deeplearning4j:deeplearning4j-core:${project.dl4j_version}"
+    implementation "org.datavec:datavec-api:${project.dl4j_version}"
+    testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.0'
+    testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.0'
+}
+
+test {
+    useJUnitPlatform()
+}
+jar {
+    manifest {
+        attributes(
+                'Main-Class': 'com.gunurung.chess.Main'
+        )
+    }
+}
